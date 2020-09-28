@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PropellerSpin : MonoBehaviour
 {
-    public Vector3 RotateAmount = 10; // degrees per second to rotate in each axis. Set in inspector
+    public float RotateAmount = 500f; // degrees per second to rotate in each axis. Set in inspector
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class PropellerSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(RotateAmount * Time.deltaTime);
+        transform.Rotate(Vector3.forward, RotateAmount * Time.deltaTime);
     }
 }
