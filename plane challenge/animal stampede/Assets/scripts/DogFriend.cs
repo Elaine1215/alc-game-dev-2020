@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class DogFriend : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(10, 0, 0);
-    
+    //sets what object player is
+    public GameObject Player;
+
+    //set offset from player
+    private Vector3 offset = new Vector3(2, 0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +19,7 @@ public class DogFriend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        //makes dog follow player with offset
+        transform.position = Player.transform.position + offset;
     }
 }
