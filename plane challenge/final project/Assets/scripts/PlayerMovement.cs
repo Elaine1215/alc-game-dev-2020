@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //gets the needed directions
-        verticalInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxis("Horizontal");
 
         //moves player forward and backward
-        transform.Translate(Vector3.forward * Time.deltaTime);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
     }
 }
