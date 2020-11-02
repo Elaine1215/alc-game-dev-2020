@@ -14,9 +14,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //gets the needed directions
-        verticalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
+        //get keys to make player jump
+        verticalInput = Input.GetAxis("");
 
         //moves player forward and backward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
+        //make player jump
+
     }
 }
