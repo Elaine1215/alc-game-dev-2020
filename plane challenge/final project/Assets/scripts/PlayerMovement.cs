@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 20.0f;
 
     private float horizontalInput;
+    private float verticalInput;
 
     //jumping
     private Rigidbody playerRb;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //gets the needed directions
         horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         //moves player forward and backward
         transform.Translate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
