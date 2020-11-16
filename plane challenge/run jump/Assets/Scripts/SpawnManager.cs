@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject obstaclePrefab;
     private Vector3 spawnPos = new Vector3(25, 0, 0);
+
     //pulls script information into this script
     private PlayerController playerControllerScript;
 
