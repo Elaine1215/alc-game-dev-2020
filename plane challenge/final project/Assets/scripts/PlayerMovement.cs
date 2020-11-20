@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float gravityMod;
     public bool isOnGround = true;
 
+    public float zRange = 290;
+
     private void Start()
     {
         //initialize component and add rigidbody
@@ -30,7 +32,14 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         //moves player forward and backward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
+        //transform.Translate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+        //keeps player from running off map
+        if (transform.position.z > zRange)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
@@ -41,6 +50,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        isOnGround = true;
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            //make enemy move closer if player hits object
+
+        }
     }
 }
