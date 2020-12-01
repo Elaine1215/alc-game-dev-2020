@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraFocalPoint
   - PowerUp
+  - Enemy
   layers:
   - Default
   - TransparentFX
