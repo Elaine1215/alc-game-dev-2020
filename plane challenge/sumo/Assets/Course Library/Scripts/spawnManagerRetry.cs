@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnManager : MonoBehaviour
+public class spawnManagerRetry : MonoBehaviour
 {
     public GameObject enemyPrefab;
     private float spawnRange = 9;
@@ -13,16 +13,10 @@ public class spawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         SpawnEnemyWave(waveNumber);
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
         
-    }
-    void SpawnEnemyWave(int enemiesToSpawn)
-    {
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-        }
     }
     private Vector3 GenerateSpawnPosition ()
     {
@@ -31,17 +25,26 @@ public class spawnManager : MonoBehaviour
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
         return randomPos;
     }
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for(int i = 0; i < enemiesToSpawn; i++)
+        {
+            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        if (enemyCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        }
         if (transform.position.y < -10)
         {
-            enemyCount = FindObjectOfType<Enemy>().Count;
-            if (enemyCount == 0)
-            {
-                waveNumber++;
-                SpawnEnemyWave(waveNumber);
-            }
             Destroy(gameObject);
         }
     }
