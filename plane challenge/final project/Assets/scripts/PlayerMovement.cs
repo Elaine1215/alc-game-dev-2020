@@ -59,5 +59,6 @@ public class PlayerMovement : MonoBehaviour
             //make enemy move closer if player hits object
 
         }
+
     }
 }
