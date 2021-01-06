@@ -11,6 +11,7 @@ public class Targets : MonoBehaviour
     private float maxTorque = 10;
     private float xRange = 4;
     private float ySpawnPos = -6;
+    //pulls text from other script
     private GameManager gameManager;
     public int pointValue;
     //adds particle effects
@@ -25,7 +26,7 @@ public class Targets : MonoBehaviour
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = new Vector3(Random.Range(-4, 4), -6);
         //pulls code from other script
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     }
     //makes how hard the targets are thrown random
@@ -49,15 +50,23 @@ public class Targets : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //destroys target when you click on it
-        Destroy(gameObject);
-        //plays particles
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-        //gives points when you click target
-        gameManager.UpdateScore(pointValue);
+        if (gameManager.isGameActive)
+        {
+            //destroys target when you click on it
+            Destroy(gameObject);
+            //plays particles
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            //gives points when you click target
+            gameManager.UpdateScore(pointValue);
+        }
     }
+    //ends game when bad object gets hit
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
     }
 }
