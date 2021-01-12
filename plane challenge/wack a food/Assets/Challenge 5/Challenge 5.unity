@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 116231999}
   gameOverText: {fileID: 919200876}
+  timerText: {fileID: 664117475}
   titleScreen: {fileID: 92482018}
   restartButton: {fileID: 1902351379}
   targetPrefabs:
@@ -1344,7 +1345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 2
-  gameManager: {fileID: 0}
 --- !u!114 &1390857141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,7 +2063,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 3
-  gameManager: {fileID: 0}
 --- !u!114 &1910376317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2198,7 +2197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 1
-  gameManager: {fileID: 0}
 --- !u!114 &2064518096
 MonoBehaviour:
   m_ObjectHideFlags: 0
